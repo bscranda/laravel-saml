@@ -1,0 +1,27 @@
+{
+    "name": "bscranda/laravel-saml",
+    "description": "SAML authentication for Laravel 6 applications.",
+    "authors": [
+        {
+            "name": "Brady Crandall",
+            "email": "bscranda@svsu.edu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bscranda\\Saml\\SamlServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Bscranda\\Saml\\": "src/"
+        }
+    }
+}
