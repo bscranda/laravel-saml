@@ -5,7 +5,7 @@ Make sure you have installed the necessary PHP version & extensions listed in th
 
 ## Installation
 Start by requiring this package with Composer.
-```console
+```
 composer require bscranda/laravel-saml
 ```
 
