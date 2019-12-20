@@ -1,11 +1,10 @@
 <?php
-
 /**
- * Routes!
+ * Endpoints required to handle SAML requests.
  */
 
-Route::get('saml', function() {
-    echo 'Hello from the laravel-saml package!';
+Route::prefix('saml')->group(function () {
+    Route::get('metadata', 'Bscranda\Saml\Controllers\SamlController@metadata')->name('saml.metadata');
+    Route::get('acs', 'Bscranda\Saml\Controllers\SamlController@acs')->name('saml.acs');
+    Route::get('sls', 'Bscranda\Saml\Controllers\SamlController@sls')->name('saml.sls');
 });
-
-Route::get('print/{name}', 'Bscranda\Saml\SamlController@print');

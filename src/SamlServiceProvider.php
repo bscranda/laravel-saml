@@ -3,6 +3,7 @@
 namespace Bscranda\Saml;
 
 use Illuminate\Support\ServiceProvider;
+use Bscranda\Saml\Services\OneLoginBuilder;
 
 class SamlServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,11 @@ class SamlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Register controller
-        $this->app->make('Bscranda\Saml\SamlController');
+        $this->app->singleton(SamlAuth::class, function ($app) {
+            $oneLoginAuth = OneLoginBuilder::createAuthFromConfig();
+            return new SamlAuth($oneLoginAuth);
+        });
+
     }
 
     /**
@@ -25,5 +29,10 @@ class SamlServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+        $this->publishes([
+            __DIR__.'/config/saml_settings.php' => config_path('saml_settings.php'),
+        ]);
     }
+
 }
